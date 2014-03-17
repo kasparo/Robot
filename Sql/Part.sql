@@ -1,0 +1,34 @@
+USE [RobotHand]
+GO
+
+/****** Object:  Table [dbo].[Part]    Script Date: 03/17/2014 06:59:19 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Part](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Type] [int] NOT NULL,
+	[Id_Robot] [int] NOT NULL,
+ CONSTRAINT [PK_Part] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[Part]  WITH CHECK ADD  CONSTRAINT [FK_Part_Robot] FOREIGN KEY([Id_Robot])
+REFERENCES [dbo].[Robot] ([Id])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[Part] CHECK CONSTRAINT [FK_Part_Robot]
+GO
+
+ALTER TABLE [dbo].[Part] ADD  CONSTRAINT [DF_Part_Type]  DEFAULT ((0)) FOR [Type]
+GO
+
+
