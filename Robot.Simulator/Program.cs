@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using Robot.Library;
 
 namespace Robot.Simulator
 {
@@ -11,8 +12,11 @@ namespace Robot.Simulator
     {
         static void Main(string[] args)
         {
-            var configValue = ConfigurationManager.AppSettings["MyConfig"];
-            Console.WriteLine(configValue);
+            var connecionString = ConfigurationManager.ConnectionStrings["RobotDB"].ConnectionString;
+
+            DataProvider provider = new DataProvider(connecionString);
+            Console.WriteLine(provider.GetRobots());
+            
             Console.ReadLine();
         }
     }
