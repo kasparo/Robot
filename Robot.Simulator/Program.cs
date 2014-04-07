@@ -14,9 +14,14 @@ namespace Robot.Simulator
         {
             var connecionString = ConfigurationManager.ConnectionStrings["RobotDB"].ConnectionString;
 
+            /*
             DataProvider provider = new DataProvider(connecionString);
             Console.WriteLine(provider.GetRobots());
-            
+            */
+
+            DataContext dataContext = new DataContext(connecionString);
+            var robots = dataContext.Robots.ToList();
+
             Console.ReadLine();
         }
     }
