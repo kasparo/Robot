@@ -9,6 +9,8 @@ namespace Robot.Library
     public class DataContext : DbContext
     {
         public DbSet<RobotEntity> Robots { get; set; }
+        public DbSet<Part> Parts { get; set; }
+        public DbSet<Instruction> Instructions { get; set; }
 
         public DataContext()
             : base()

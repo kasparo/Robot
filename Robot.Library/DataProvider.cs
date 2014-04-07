@@ -8,6 +8,7 @@ using System.Data;
 
 namespace Robot.Library
 {
+    [Obsolete("This is a sample code for ADO.NET") ]
     public class DataProvider
     {
         private SqlConnection _connection;

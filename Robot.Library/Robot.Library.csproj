@@ -48,11 +48,18 @@
   <ItemGroup>
     <Compile Include="DataContext.cs" />
     <Compile Include="DataProvider.cs" />
+    <Compile Include="Manager.cs" />
     <Compile Include="Migrations\201403311606356_RequieredFieldsForRobot.cs" />
     <Compile Include="Migrations\201403311606356_RequieredFieldsForRobot.Designer.cs">
       <DependentUpon>201403311606356_RequieredFieldsForRobot.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404071516177_BaseModelImplementation.cs" />
+    <Compile Include="Migrations\201404071516177_BaseModelImplementation.Designer.cs">
+      <DependentUpon>201404071516177_BaseModelImplementation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Instruction.cs" />
+    <Compile Include="Models\Part.cs" />
     <Compile Include="Models\Robot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -63,6 +70,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201403311606356_RequieredFieldsForRobot.resx">
       <DependentUpon>201403311606356_RequieredFieldsForRobot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404071516177_BaseModelImplementation.resx">
+      <DependentUpon>201404071516177_BaseModelImplementation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
