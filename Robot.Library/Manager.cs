@@ -16,7 +16,12 @@ namespace Robot.Library
             _context = new DataContext(connectionString);
         }
 
-        public void CreateRobot(string place, List<Part> parts)
+        /// <summary>
+        /// Method for robot creating
+        /// </summary>
+        /// <param name="place">place of robot</param>
+        /// <param name="parts">robot´s parts</param>
+        public string CreateRobot(string place, List<Part> parts)
         {
             var newRobot = new RobotEntity()
             {
@@ -36,6 +41,35 @@ namespace Robot.Library
             while (true);
 
             _context.Robots.Add(newRobot);
+            _context.SaveChanges();
+
+            return newRobot.Identification;
+        }
+
+        public void AddPart(PartType type, RobotEntity robot)
+        {
+            var newPart = new Part()
+            {
+                Type = type,
+                Robot = robot
+            };
+
+            _context.Parts.Add(newPart);
+            _context.SaveChanges();
+        }
+
+        public void CreateInstruction(int idPart, int value, RobotEntity robot)
+        {
+            var existPart = robot.Parts.Any(p => p.Id == idPart);
+            if (!existPart)
+                return;
+            
+            var instruction = new Instruction()
+            {
+                PartId = idPart,
+                Value = value
+            };
+            _context.Instructions.Add(instruction);
             _context.SaveChanges();
         }
 
